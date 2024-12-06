@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carregar Bateria</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifique a Situação</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="jogo">
-        <h1>Carregue o celular!</h1>
-        <div id="bateria">
-            <div id="nivel-bateria"></div>
+    <div class="container-jogo">
+        <h1>Verifique se a situação é Falsa ou Verdadeira</h1>
+        <div id="rodada">
+          <img id="imagem-situacao" src="" alt="Imagem da situação">
+          <p id="frase-situacao"></p>
         </div>
-        <button id="botao-carregar">Carregar Bateria</button>
-        <div id="cor-tela">
-            <p>Escolha a cor da tela:</p>
-            <button class="cor-opcao" data-cor="verde">Verde</button>
-            <button class="cor-opcao" data-cor="vermelho">Vermelho</button>
-            <button class="cor-opcao" data-cor="azul">Azul</button>
-            <button class="cor-opcao" data-cor="branco">Branco</button>
-            <button class="cor-opcao" data-cor="amarelo">Amarelo</button>
+        <div class="controles">
+          <button id="botao-verdadeiro">Verdadeiro</button>
+          <button id="botao-falso">Falso</button>
         </div>
-        <div id="resultado">
-            <p id="mensagem-resultado"></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
+        <p id="contador-rodada">Rodada: 1/3</p>
+      </div>
+      
+      <div id="mensagem-final">
+        <h2 id="mensagem-fim"></h2>
+      </div>
+      
+  <script src="script.js"></script>
 </body>
 </html>
