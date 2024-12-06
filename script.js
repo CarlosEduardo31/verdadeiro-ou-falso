@@ -27,7 +27,7 @@ const situacoes = [
       return;
     }
     const situacaoAtual = situacoes[rodadaAtual];
-    document.getElementById("imagem-situacao").src = `imagens/${situacaoAtual.imagem}`;
+    document.getElementById("imagem-situacao").src = `${situacaoAtual.imagem}`;
     document.getElementById("frase-situacao").textContent = situacaoAtual.frase;
     document.getElementById("contador-rodada").textContent = `Rodada: ${rodadaAtual + 1}/3`;
   }
