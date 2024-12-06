@@ -1,71 +1,43 @@
-const situacoes = [
-    { 
-      imagem: "fone.jpg", 
-      frase: "O fone está quebrado.", 
-      correto: false 
-    },
-    { 
-      imagem: "mouse.jpg", 
-      frase: "O mouse não está quebrado.", 
-      correto: true 
-    },
-    { 
-      imagem: "cabo.jpg", 
-      frase: "O cabo está danificado.", 
-      correto: true 
-    },
-  ];
-  
-  let rodadaAtual = 0;
-  let respostasCorretas = 0; // Contador de acertos
-  let elementoMensagemRetorno = document.getElementById("mensagem-retorno");
-  let mensagem = document.getElementById("mensagem-fim");
-  
-  function carregarRodada() {
-    if (rodadaAtual >= situacoes.length) {
-      finalizarJogo();
-      return;
-    }
-    const situacaoAtual = situacoes[rodadaAtual];
-    document.getElementById("imagem-situacao").src = `${situacaoAtual.imagem}`;
-    document.getElementById("frase-situacao").textContent = situacaoAtual.frase;
-    document.getElementById("contador-rodada").textContent = `Rodada: ${rodadaAtual + 1}/3`;
-  }
-  
-  function verificarResposta(respostaUsuario) {
-    const situacaoAtual = situacoes[rodadaAtual];
-    
-    // Verifica se a resposta do usuário está correta
-    if (situacaoAtual.correto === respostaUsuario) {
-      respostasCorretas++;
-      elementoMensagemRetorno.textContent = "Correto!";
+document.getElementById('botao-carregar').addEventListener('click', carregarBateria);
+
+let corTela = '';
+let nivelBateria = 0;
+
+function carregarBateria() {
+    nivelBateria = Math.floor(Math.random() * 101);  // Valor aleatório entre 0 e 100
+    const nivelElemento = document.getElementById('nivel-bateria');
+    const corElemento = document.getElementById('cor-tela');
+
+    // Ajustando a cor da bateria
+    if (nivelBateria <= 20) {
+        nivelElemento.style.backgroundColor = 'red';
+    } else if (nivelBateria <= 50) {
+        nivelElemento.style.backgroundColor = 'orange';
     } else {
-      elementoMensagemRetorno.textContent = "Errado!";
+        nivelElemento.style.backgroundColor = 'green';
     }
-  
-    rodadaAtual++;
-  
-    setTimeout(() => {
-      elementoMensagemRetorno.textContent = "";
-      carregarRodada();
-    }, 1000);
-  }
-  
-  function finalizarJogo() {
-    // Atualiza a mensagem de fim de jogo com base nos acertos
-    if (respostasCorretas === 3) {
-        mensagem.textContent = "O código da sua atividade é 03";
-        mensagem.style.color = 'green';
-      } else {
-        mensagem.textContent = "O código da sua atividade é 05";
-        mensagem.style.color = 'red';
-      }
-  }
-  
-  // Event listeners para os botões
-  document.getElementById("botao-verdadeiro").addEventListener("click", () => verificarResposta(true));
-  document.getElementById("botao-falso").addEventListener("click", () => verificarResposta(false));
-  
-  // Inicializa a primeira rodada
-  carregarRodada();
-  
+
+    nivelElemento.style.width = `${nivelBateria}%`;
+
+    // Alterando a cor da tela
+    const cores = ['verde', 'vermelho', 'azul', 'branco', 'amarelo'];
+    corTela = cores[Math.floor(Math.random() * cores.length)];
+    corElemento.style.backgroundColor = corTela;
+}
+
+document.querySelectorAll('.cor-opcao').forEach((button) => {
+    button.addEventListener('click', verificarCor);
+});
+
+function verificarCor(event) {
+    const corEscolhida = event.target.getAttribute('data-cor');
+    const resultadoElemento = document.getElementById('mensagem-resultado');
+
+    if (corEscolhida === corTela) {
+        resultadoElemento.textContent = 'Cor correta! Parabéns!';
+        resultadoElemento.style.color = 'green';
+    } else {
+        resultadoElemento.textContent = 'Cor incorreta! Tente novamente.';
+        resultadoElemento.style.color = 'red';
+    }
+}
