@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container-jogo {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  img {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  #frase-situacao {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .controles button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #botao-verdadeiro {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  #botao-falso {
+    background-color: #f44336;
+    color: white;
+  }
+
+  #mensagem-fim {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .oculto {
+    display: none;
+  }
+  
