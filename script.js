@@ -1,16 +1,16 @@
 const situacoes = [
   { 
-    imagem: "fone.jpg", 
+    imagem: "./imagens/fone.jpg", 
     frase: "O fone está quebrado.", 
     correto: false 
   },
   { 
-    imagem: "mouse.jpg", 
+    imagem: "./imagens/mouse.jpg", 
     frase: "O mouse não está quebrado.", 
     correto: true 
   },
   { 
-    imagem: "cabo.png", 
+    imagem: "./imagens/cabo.png", 
     frase: "O cabo está danificado.", 
     correto: true 
   },
@@ -56,13 +56,20 @@ function verificarResposta(respostaUsuario) {
   }, 1000);
 }
 
+function gerarCodigoAleatorio() {
+  const codigos = ["05", "01", "02", "04"];
+  const indiceAleatorio = Math.floor(Math.random() * codigos.length);
+  return codigos[indiceAleatorio];
+}
+
 function finalizarJogo() {
   // Atualiza a mensagem de fim de jogo com base nos acertos
   if (respostasCorretas === 3) {
     mensagem.textContent = "O código da sua atividade é 03";
     mensagem.style.color = 'green';
   } else {
-    mensagem.textContent = "O código da sua atividade é 05";
+    const codigoErro = gerarCodigoAleatorio();
+    mensagem.textContent = `O código da sua atividade é ${codigoErro}`;
     mensagem.style.color = 'red';
   }
 }
